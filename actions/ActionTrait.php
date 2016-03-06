@@ -58,7 +58,10 @@ trait ActionTrait
     {
         if ($this->_modelName === null) {
             if (!is_null($this->controller->model))
-                $this->_modelName = $this->controller->model;
+                if(is_object($this->controller->model))
+                    $this->_modelName = $this->controller->model->className();
+                else
+                    $this->_modelName = $this->controller->model;
             else {
 
                 $this->_modelName = str_replace(['\\controllers\\', 'Controller'], ['\\models\\', ''],
