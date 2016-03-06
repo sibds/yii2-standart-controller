@@ -28,4 +28,13 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \sibds\controllers\AutoloadExample::widget(); ?>```
+<?php
+...
+use sibds\controllers\StandartController;
+...
+class NewsController extends StandartController
+{
+    ...your code
+}
+
+```
