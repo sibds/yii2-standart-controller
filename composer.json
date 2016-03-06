@@ -15,7 +15,8 @@
     },
     "autoload": {
         "psr-4": {
-            "sibds\\controllers\\": ""
+            "sibds\\controllers\\": "",
+            "sibds\\controllers\\actions\\": "actions/"
         }
     }
 }
