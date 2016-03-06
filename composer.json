@@ -1,0 +1,21 @@
+{
+    "name": "sibds/yii2-standart-controller",
+    "description": "Standart Controllers for Backend on Yii2",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","controllers"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vadim Mazur",
+            "email": "mazurva@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "sibds\\controllers\\": ""
+        }
+    }
+}
