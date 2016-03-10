@@ -45,7 +45,7 @@ trait ActionTrait
     {
         foreach($this->getModel()->behaviors as $behavior)
             if($behavior instanceof $b)
-                return true;
+                return $behavior;
 
         return false;
     }
