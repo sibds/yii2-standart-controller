@@ -13,6 +13,7 @@ use creocoder\nestedsets\NestedSetsBehavior;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
 
 class StandartController extends Controller
 {
