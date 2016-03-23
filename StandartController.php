@@ -10,6 +10,7 @@ namespace sibds\controllers;
 
 
 use creocoder\nestedsets\NestedSetsBehavior;
+use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -28,6 +29,16 @@ class StandartController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['list', 'trash', 'copy', 'update', 'unlock', 'lock', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
