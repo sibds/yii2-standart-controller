@@ -33,7 +33,7 @@ class StandartController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['list', 'trash', 'copy', 'update', 'unlock', 'lock', 'delete'],
+                        'actions' => ['list', 'trash', 'copy', 'update', 'unlock', 'lock', 'delete', 'nodeMove'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
