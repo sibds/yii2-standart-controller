@@ -13,11 +13,12 @@ use sibds\components\ActiveRecord;
 
 trait ModelHelper
 {
-    private function modelFind(ActiveRecord $nameModel, $id){
-        $obj = $nameModel::find();
+    private function modelFind($nameModel, $id){
+        $obj = new $nameModel;
+        $find = $nameModel::find();
         $primareKey = $nameModel::primaryKey()[0];
         return $obj->hasAttribute($obj->removedAttribute)?
-            $obj->withRemoved()->andWhere([$primareKey => $id])->one():
+            $find->withRemoved()->andWhere([$primareKey => $id])->one():
             $nameModel::findOne($id);
     }
 }
