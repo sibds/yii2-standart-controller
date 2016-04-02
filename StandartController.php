@@ -10,6 +10,7 @@ namespace sibds\controllers;
 
 
 use creocoder\nestedsets\NestedSetsBehavior;
+use sibds\components\ActiveRecord;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
@@ -18,6 +19,8 @@ use yii\web\NotFoundHttpException;
 
 class StandartController extends Controller
 {
+    use ModelHelper;
+
     public $model = null;
     public $searchModel = null;
 
@@ -102,7 +105,7 @@ class StandartController extends Controller
 
         if (($id = \Yii::$app->request->get('id')) === null)
             $model = new $nameModel;
-        else if (($model = $nameModel::findOne($id)) === null)
+        else if (($model = $this->modelFind($nameModel, $id)) === null)
             throw new NotFoundHttpException('The specified record cannot be found.');
 
         $this->model = $model;
