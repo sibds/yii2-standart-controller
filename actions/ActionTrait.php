@@ -2,7 +2,9 @@
 namespace sibds\controllers\actions;
 
 use sibds\components\ActiveRecord;
+use sibds\controllers\ModelHelper;
 use yii\base\Exception;
+use yii\web\NotFoundHttpException;
 
 /**
  * Created by PhpStorm.
@@ -12,6 +14,8 @@ use yii\base\Exception;
  */
 trait ActionTrait
 {
+    use ModelHelper;
+
     /**
      * @var string
      */
@@ -35,7 +39,7 @@ trait ActionTrait
 
         if (($id = \Yii::$app->request->get('id')) === null)
             $model = new $nameModel;
-        else if (($model = $nameModel::findOne($id)) === null)
+        else if (($model = $this->modelFind($nameModel, $id)) === null)
             throw new NotFoundHttpException('The specified record cannot be found.');
 
         return $model;
