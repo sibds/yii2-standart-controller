@@ -17,7 +17,7 @@ class UpdateAction extends BaseAction
         $model = $this->getModel();
 
         if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
-            if (($behavior = $this->testBehavior(new NestedSetsBehavior())) !== false) {
+            if (($behavior = $this->testBehavior(new NestedSetsBehavior())) !== false && $model->isNewRecord) {
                 if ($model->hasAttribute($behavior->treeAttribute)) {
                     $modelName = $this->getModelName();
 
