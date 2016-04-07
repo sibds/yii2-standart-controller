@@ -20,7 +20,8 @@ class ListAction extends BaseAction
         $searchModel = new $searchModel;
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
 
-        \Yii::$app->user->returnUrl = Url::current();
+        if(\Yii::$app->request->isGet)
+            \Yii::$app->user->returnUrl = Url::current();
 
         return $this->render([
             'searchModel' => $searchModel,
