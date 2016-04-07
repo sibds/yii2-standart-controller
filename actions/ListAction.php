@@ -9,6 +9,8 @@
 namespace sibds\controllers\actions;
 
 
+use yii\helpers\Url;
+
 class ListAction extends BaseAction
 {
 
@@ -17,6 +19,8 @@ class ListAction extends BaseAction
         $searchModel = $this->getSearchModelName();
         $searchModel = new $searchModel;
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+
+        \Yii::$app->user->returnUrl = Url::current();
 
         return $this->render([
             'searchModel' => $searchModel,
