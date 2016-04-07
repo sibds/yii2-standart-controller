@@ -98,8 +98,7 @@ class StandartController extends Controller
     public function getModel()
     {
         if (is_null($this->model)) {
-            $nameModel = str_replace(['\\controllers\\', 'Controller'], ['\\models\\', ''],
-                $this->className());
+            $nameModel = $this->getModelName();
         }else
             return $this->model;
 
@@ -111,6 +110,12 @@ class StandartController extends Controller
         $this->model = $model;
 
         return $model;
+    }
+
+    public function getModelName()
+    {
+        return str_replace(['\\controllers\\', 'Controller'], ['\\models\\', ''],
+            $this->className());
     }
 
     public function testBehavior($b)
