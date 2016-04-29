@@ -10,6 +10,7 @@ namespace sibds\controllers;
 
 
 use creocoder\nestedsets\NestedSetsBehavior;
+use zxbodya\yii2\galleryManager\GalleryBehavior;
 use sibds\components\ActiveRecord;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
