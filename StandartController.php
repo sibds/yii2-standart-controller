@@ -75,12 +75,11 @@ class StandartController extends Controller
                 if ($method->isPublic() && $method->getName() === $methodName) {
                     return new InlineAction($id, $this, $methodName);
                 }
-            }elseif(isset($actionMap[$id])){
-                return \Yii::createObject($actionMap[$id], [$id, $this]);
             }
-        } elseif (isset($actionMap[$id])) {
+        }         
+        if (isset($actionMap[$id])) {
             return \Yii::createObject($actionMap[$id], [$id, $this]);
-        }        
+        }
         return null;
     }
 
