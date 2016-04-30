@@ -95,7 +95,7 @@ class StandartController extends Controller
             'unlock' => ['class' => 'sibds\controllers\actions\UnlockAction'],
             'lock' => ['class' => 'sibds\controllers\actions\LockAction'],
             'delete' => ['class' => 'sibds\controllers\actions\DeleteAction'],
-            'restore' => ['class' => 'sibds\controllers\actions\RestoreAction'],],
+            'restore' => ['class' => 'sibds\controllers\actions\RestoreAction'],
         ];
 
         if($this->testBehavior(new NestedSetsBehavior())){
