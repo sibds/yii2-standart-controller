@@ -38,7 +38,7 @@ class StandartController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['list', 'trash', 'copy', 'update', 'unlock', 'lock', 'delete', 'nodeMove', 'galleryApi'],
+                        'actions' => ['list', 'trash', 'copy', 'update', 'unlock', 'lock', 'delete', 'restore', 'nodeMove', 'galleryApi'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -48,6 +48,7 @@ class StandartController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'restore' => ['POST'],
                 ],
             ],
         ];
@@ -94,6 +95,7 @@ class StandartController extends Controller
             'unlock' => ['class' => 'sibds\controllers\actions\UnlockAction'],
             'lock' => ['class' => 'sibds\controllers\actions\LockAction'],
             'delete' => ['class' => 'sibds\controllers\actions\DeleteAction'],
+            'restore' => ['class' => 'sibds\controllers\actions\RestoreAction'],],
         ];
 
         if($this->testBehavior(new NestedSetsBehavior())){
