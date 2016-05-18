@@ -16,7 +16,7 @@ class RestoreAction extends BaseAction
         $model = $this->getModel();
         if (!$model->isNewRecord&&$model->isRemoved)
             $model->restore();
-        if (\Yii::$app->request->isGet || \Yii::$app->request->isPost)
+        if(!\Yii::$app->request->isAjax && (\Yii::$app->request->isGet || \Yii::$app->request->isPost))
             return $this->redirect();
         return true;
     }
