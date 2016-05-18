@@ -15,7 +15,7 @@ class UnlockAction extends BaseAction
     {
         $this->getModel()->unlock();
 
-        if (\Yii::$app->request->isGet || \Yii::$app->request->isPost)
+        if(!\Yii::$app->request->isAjax && (\Yii::$app->request->isGet || \Yii::$app->request->isPost))
             return $this->redirect();
 
         return true;
