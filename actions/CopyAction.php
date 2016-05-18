@@ -15,7 +15,7 @@ class CopyAction extends BaseAction
     {
         $this->getModel()->duplicate();
 
-        if (\Yii::$app->request->isGet || \Yii::$app->request->isPost)
+        if(!\Yii::$app->request->isAjax && (\Yii::$app->request->isGet || \Yii::$app->request->isPost))
             return $this->redirect();
 
         return true;
