@@ -48,6 +48,8 @@ class UpdateAction extends BaseAction
 
             if (isset($_GET['close']))
                 return $this->redirect();
+                
+            \Yii::$app->session->setFlash('success', 'Record saved!', false);    
 
             return $this->redirect([$this->id, 'id' => $model->id]);
         } else {
