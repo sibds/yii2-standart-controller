@@ -23,11 +23,13 @@ class BaseAction extends \yii\base\Action
      */
     public function redirect($actionId = null)
     {
-        if ($actionId === null)
-            if($this->controller->defaultAction === null){
+        if (is_null($actionId)) {
+            if ($this->controller->defaultAction === null) {
                 $this->controller->redirect(\Yii::$app->user->returnUrl);
-            }else
+            } else {
                 $actionId = $this->controller->defaultAction;
+            }
+        }
 
         if (is_array($actionId)) {
             $this->controller->redirect($actionId);
