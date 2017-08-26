@@ -11,7 +11,8 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "*"
+        "yiisoft/yii2": "*",
+        "zxbodya/yii2-gallery-manager": "*@dev"
     },
     "autoload": {
         "psr-4": {
