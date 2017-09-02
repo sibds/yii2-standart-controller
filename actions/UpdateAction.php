@@ -3,6 +3,7 @@
 namespace sibds\controllers\actions;
 
 use creocoder\nestedsets\NestedSetsBehavior;
+use yii\web\UploadedFile;
 
 /**
  * Created by PhpStorm.
