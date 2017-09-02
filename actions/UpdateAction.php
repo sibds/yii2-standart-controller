@@ -17,6 +17,33 @@ class UpdateAction extends BaseAction
         $model = $this->getModel();
 
         if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
+            if($model->hasMethod('files')){
+                $itemFiles = $model->files();
+                foreach ($itemFiles as $key => $value){
+                    $file = UploadedFile::getInstance($model, $key);
+
+                    if(!empty($file)){
+                        $oldName = $model->$value;
+
+                        // store the source file name
+                        $model->$value = $file->name;
+                        $a = explode(".", $file->name);
+                        $ext = end($a);
+
+                        // generate a unique file name
+                        $model->$value = \Yii::$app->security->generateRandomString().".{$ext}";
+
+                        // the path to save file, you can set an uploadPath
+                        // in Yii::$app->params (as used in example below)
+                        $path = \Yii::$app->params['uploadPath']() . $model->$value;
+
+                        if($oldName!=''){
+                            unlink(\Yii::$app->params['uploadPath']() . $oldName);
+                        }
+                        $file->saveAs($path);
+                    }
+                }
+            }
             if (($behavior = $this->testBehavior(new NestedSetsBehavior())) !== false && $model->isNewRecord) {
                 if ($model->hasAttribute($behavior->treeAttribute)) {
                     $modelName = $this->getModelName();
