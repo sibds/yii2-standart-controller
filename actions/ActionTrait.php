@@ -35,6 +35,10 @@ trait ActionTrait
      */
     public function getModel()
     {
+        if (!is_null($this->controller->model))
+            if(is_object($this->controller->model))
+                return $this->controller->model;
+        
         $nameModel = $this->getModelName();
 
         if (($id = \Yii::$app->request->get('id')) === null)
