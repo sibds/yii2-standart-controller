@@ -155,8 +155,8 @@ class StandartController extends Controller
 
     public function getModelName()
     {
-        return str_replace(['\\controllers\\', 'Controller'], ['\\models\\', ''],
-            $this->className());
+        return preg_replace(["/\\\controllers\\\/", "/Controller/"], ['\\models\\', ''],
+            $this->className(), 1);
     }
 
     public function testBehavior($b)
