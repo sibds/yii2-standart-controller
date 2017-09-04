@@ -71,9 +71,8 @@ trait ActionTrait
                 else
                     $this->_modelName = $this->controller->model;
             else {
-
-                $this->_modelName = str_replace(['\\controllers\\', 'Controller'], ['\\models\\', ''],
-                    $this->controller->className());
+                $this->_modelName = preg_replace(["/\\\controllers\\\/", "/Controller$/"], ['\\models\\', ''],
+                    $this->controller->className(), 1);
             }
         }
 
