@@ -46,6 +46,10 @@ class BaseAction extends \yii\base\Action
     {
         if ($this->_view === null)
             $this->_view = $this->id;
+        
+        if (\Yii::$app->request->isAjax) {
+            return $this->controller->renderPartial($this->_view, $data);
+        }
 
         return $this->controller->render($this->_view, $data);
     }
