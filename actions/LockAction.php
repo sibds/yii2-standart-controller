@@ -16,7 +16,7 @@ class LockAction extends BaseAction
         $this->getModel()->lock();
 
         if(!\Yii::$app->request->isAjax && (\Yii::$app->request->isGet || \Yii::$app->request->isPost))
-            return $this->redirect();
+            return $this->controller->redirect(\Yii::$app->request->referrer);
 
         if(\Yii::$app->request->isAjax&&!\Yii::$app->request->isPjax)
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
