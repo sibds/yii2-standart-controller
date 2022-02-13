@@ -159,14 +159,18 @@ class StandartController extends Controller
             $this->className(), 1);
     }
 
-    public function testBehavior($b)
+    public function testBehavior($b, $returnBehavior = false)
     {
         if(is_null($this->model))
             $this->getModel();
 
         foreach($this->model->behaviors as $behavior)
             if($behavior instanceof $b)
-                return true;
+                if($returnBehavior){
+                    return $behavior;
+                } else {
+                    return true;
+                }
 
         return false;
     }
